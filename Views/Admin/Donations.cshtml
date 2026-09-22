@@ -1,0 +1,319 @@
+@model IEnumerable<FoodDonationManagementSystem.Models.Donation>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Manage Donations";
+}
+
+
+
+<div class="container mt-5">
+
+
+
+    <!-- HEADER -->
+
+
+    <div class="mb-5">
+
+
+        <h2 class="fw-bold"
+            style="color:#064E3B">
+
+
+            🍱 Manage Donations
+
+
+        </h2>
+
+
+        <p class="text-muted">
+
+            Monitor all food donations and their current status.
+
+        </p>
+
+
+    </div>
+
+
+
+
+
+
+
+    <div class="card p-4">
+
+
+
+        <div class="table-responsive">
+
+
+
+            <table class="table align-middle table-hover">
+
+
+
+                <thead style="background:#064E3B;color:white;">
+
+
+                    <tr>
+
+
+                        <th>#</th>
+
+                        <th>Image</th>
+
+                        <th>Food</th>
+
+                        <th>Type</th>
+
+                        <th>Quantity</th>
+
+                        <th>Expiry</th>
+
+                        <th>Status</th>
+
+                        <th>Action</th>
+
+
+                    </tr>
+
+
+                </thead>
+
+
+
+
+
+                <tbody>
+
+
+                    @{
+                        int i = 1;
+                    }
+
+
+
+                    @foreach (var item in Model)
+                    {
+
+
+                        <tr>
+
+
+
+                            <td>
+
+                                @i
+
+                            </td>
+
+
+
+
+
+                            <td>
+
+
+                                @if (!string.IsNullOrEmpty(item.FoodImage))
+                                {
+
+
+                                    <img src="@item.FoodImage"
+                                         style="width:80px;height:60px;object-fit:cover;border-radius:12px;" />
+
+
+                                }
+
+                                else
+                                {
+
+
+                                    <img src="/images/food/default.png"
+                                         style="width:80px;height:60px;object-fit:cover;border-radius:12px;" />
+
+
+                                }
+
+
+                            </td>
+
+
+
+
+
+
+
+                            <td class="fw-bold">
+
+
+                                🍲 @item.FoodName
+
+
+                            </td>
+
+
+
+
+
+
+                            <td>
+
+
+                                @item.FoodType
+
+
+                            </td>
+
+
+
+
+
+
+                            <td>
+
+
+                                📦 @item.Quantity
+
+
+                            </td>
+
+
+
+
+
+
+
+                            <td>
+
+
+                                📅 @item.ExpiryDate.ToShortDateString()
+
+
+                            </td>
+
+
+
+
+
+
+
+                            <td>
+
+
+
+                                @if (item.Status == "Pending")
+                                {
+
+                                    <span class="badge bg-warning text-dark px-3 py-2">
+
+                                        ⏳ Pending
+
+                                    </span>
+
+                                }
+
+                                else if (item.Status == "Accepted")
+                                {
+
+                                    <span class="badge bg-primary px-3 py-2">
+
+                                        🤝 Accepted
+
+                                    </span>
+
+                                }
+
+                                else
+                                {
+
+                                    <span class="badge bg-success px-3 py-2">
+
+                                        ✔ Completed
+
+                                    </span>
+
+                                }
+
+
+                            </td>
+
+
+
+
+
+
+
+                            <td>
+
+
+
+                                <form asp-action="DeleteDonation"
+                                      method="post">
+
+
+                                    @Html.AntiForgeryToken()
+
+
+
+                                    <input type="hidden"
+                                           name="id"
+                                           value="@item.DonationId" />
+
+
+
+
+                                    <button type="submit"
+                                            class="btn btn-outline-danger btn-sm"
+                                            onclick="return confirm('Delete this donation?');">
+
+
+                                        🗑 Delete
+
+
+                                    </button>
+
+
+
+                                </form>
+
+
+
+                            </td>
+
+
+
+
+                        </tr>
+
+
+
+                        i++;
+
+
+                    }
+
+
+
+                </tbody>
+
+
+
+
+            </table>
+
+
+
+
+        </div>
+
+
+
+
+    </div>
+
+
+
+
+</div>

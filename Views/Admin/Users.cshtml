@@ -1,0 +1,267 @@
+@model IEnumerable<FoodDonationManagementSystem.Models.User>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Manage Users";
+}
+
+
+
+<div class="container mt-5">
+
+
+
+    <!-- HEADER -->
+
+
+    <div class="mb-5">
+
+
+        <h2 class="fw-bold"
+            style="color:#064E3B">
+
+
+            👥 Manage Users
+
+
+        </h2>
+
+
+        <p class="text-muted">
+
+            View and manage all registered users of the system.
+
+        </p>
+
+
+    </div>
+
+
+
+
+
+
+
+    <div class="card p-4">
+
+
+
+        <div class="table-responsive">
+
+
+
+            <table class="table align-middle table-hover">
+
+
+                <thead style="background:#064E3B;color:white;">
+
+
+                    <tr>
+
+
+                        <th>#</th>
+
+                        <th>Name</th>
+
+                        <th>Email</th>
+
+                        <th>Phone</th>
+
+                        <th>Role</th>
+
+                        <th>Action</th>
+
+
+                    </tr>
+
+
+                </thead>
+
+
+
+
+
+                <tbody>
+
+
+
+                    @{
+                        int i = 1;
+                    }
+
+
+
+                    @foreach (var user in Model)
+                    {
+
+
+                        <tr>
+
+
+
+                            <td>
+
+                                @i
+
+                            </td>
+
+
+
+
+
+                            <td class="fw-bold">
+
+
+                                👤 @user.Name
+
+
+                            </td>
+
+
+
+
+
+                            <td>
+
+
+                                📧 @user.Email
+
+
+                            </td>
+
+
+
+
+
+                            <td>
+
+
+                                📱 @user.Phone
+
+
+                            </td>
+
+
+
+
+
+
+
+                            <td>
+
+
+                                @if (user.Role == "Admin")
+                                {
+
+                                    <span class="badge bg-danger px-3 py-2">
+
+                                        👨‍💼 Admin
+
+                                    </span>
+
+                                }
+
+                                else if (user.Role == "NGO")
+                                {
+
+                                    <span class="badge bg-primary px-3 py-2">
+
+                                        🏢 NGO
+
+                                    </span>
+
+                                }
+
+                                else
+                                {
+
+                                    <span class="badge bg-success px-3 py-2">
+
+                                        🍲 Donor
+
+                                    </span>
+
+                                }
+
+
+
+                            </td>
+
+
+
+
+
+
+
+                            <td>
+
+
+
+                                <form asp-action="DeleteUser"
+                                      method="post">
+
+
+
+                                    @Html.AntiForgeryToken()
+
+
+
+                                    <input type="hidden"
+                                           name="id"
+                                           value="@user.Id" />
+
+
+
+
+                                    <button type="submit"
+                                            class="btn btn-outline-danger btn-sm"
+                                            onclick="return confirm('Delete this user?');">
+
+
+                                        🗑 Delete
+
+
+                                    </button>
+
+
+
+                                </form>
+
+
+
+                            </td>
+
+
+
+
+
+                        </tr>
+
+
+
+                        i++;
+
+
+                    }
+
+
+
+                </tbody>
+
+
+
+            </table>
+
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+</div>

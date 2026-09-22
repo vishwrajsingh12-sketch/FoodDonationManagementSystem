@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+    <title>
+        @ViewData["Title"] - Food Donation
+    </title>
+
+
+
+    <link rel="stylesheet"
+          href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+
+    <link rel="stylesheet"
+          href="~/css/site.css"
+          asp-append-version="true" />
+
+</head>
+
+
+
+<body class="login-background">
+
+
+
+    <div class="container">
+
+
+        <main role="main">
+
+            @RenderBody()
+
+        </main>
+
+
+    </div>
+
+
+
+
+    <footer class="text-center text-white mt-5">
+
+
+        <p>
+
+            🍲 Food Donation Management System
+
+        </p>
+
+
+        <small>
+
+            Share Food | Spread Happiness ❤️
+
+        </small>
+
+
+    </footer>
+
+
+
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <script src="~/js/site.js"></script>
+
+
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+
+</body>
+
+
+</html>

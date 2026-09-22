@@ -1,0 +1,249 @@
+/* ================= PREMIUM FOOD DONATION THEME ================= */
+
+
+:root {
+    --emerald: #064E3B;
+    --green: #10B981;
+    --mint: #059669;
+    --gold: #F59E0B;
+    --bg: #F8FAFC;
+    --text: #1E293B;
+}
+
+
+
+/* ================= BODY ================= */
+
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+
+
+/* ================= NAVBAR ================= */
+
+
+.navbar {
+    background: linear-gradient( 135deg, #064E3B, #059669 ) !important;
+    padding: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+
+
+.navbar-brand {
+    font-size: 24px;
+    color: white !important;
+    letter-spacing: 1px;
+}
+
+
+
+.nav-link {
+    color: white !important;
+    font-weight: 600;
+    margin-left: 10px;
+}
+
+
+
+    .nav-link:hover {
+        color: #FDE68A !important;
+        transform: translateY(-2px);
+    }
+
+
+
+/* ================= CARDS ================= */
+
+
+.card {
+    background: rgba(255,255,255,0.95);
+    border: none;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+
+
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 45px rgba(0,0,0,0.15);
+    }
+
+
+
+
+
+/* ================= BUTTONS ================= */
+
+
+.btn {
+    border-radius: 30px;
+    font-weight: 600;
+    padding: 10px 25px;
+}
+
+
+
+.btn-success {
+    background: linear-gradient( 135deg, #10B981, #059669 );
+    border: none;
+}
+
+
+
+    .btn-success:hover {
+        background: linear-gradient( 135deg, #059669, #064E3B );
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(16,185,129,.4);
+    }
+
+
+
+
+
+/* ================= FOOD HIGHLIGHT ================= */
+
+
+h1, h2, h3, h4, h5 {
+    font-weight: 700;
+}
+
+
+
+.text-success {
+    color: #047857 !important;
+}
+
+
+
+
+
+/* ================= DASHBOARD CARDS ================= */
+
+
+.dashboard-card {
+    border-radius: 25px;
+    padding: 25px;
+}
+
+
+
+    .dashboard-card h1 {
+        font-size: 45px;
+    }
+
+
+
+
+
+/* ================= LOGIN ================= */
+
+
+.login-background {
+    min-height: 100vh;
+    background: linear-gradient( 135deg, #ECFDF5, #FFFFFF );
+}
+
+
+
+.login-card {
+    border-radius: 30px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+}
+
+
+
+    .login-card input {
+        border-radius: 15px;
+    }
+
+
+
+/* ================= DONATION IMAGE ================= */
+
+
+.card-img-top {
+    height: 230px;
+    object-fit: cover;
+}
+
+
+
+    .card-img-top:hover {
+        transform: scale(1.05);
+    }
+
+
+
+
+
+/* ================= BADGES ================= */
+
+
+.badge {
+    border-radius: 20px;
+    padding: 10px 15px;
+}
+
+
+
+
+
+/* ================= FOOTER ================= */
+
+
+footer {
+    background: linear-gradient( 135deg, #ffffff, #ECFDF5 );
+    border-top: 1px solid #ddd;
+}
+
+
+
+
+
+/* ================= ANIMATION ================= */
+
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+.container {
+    animation: fadeIn .5s ease;
+}
+
+
+
+
+/* ================= MOBILE ================= */
+
+
+@media(max-width:768px) {
+
+    .navbar-brand {
+        font-size: 20px;
+    }
+
+
+    .card {
+        margin-bottom: 20px;
+    }
+}

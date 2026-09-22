@@ -1,0 +1,194 @@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Reports";
+}
+
+<div class="container mt-5">
+
+    <div class="mb-4">
+
+        <h2 class="text-danger fw-bold">
+            📊 System Reports
+        </h2>
+
+        <p class="text-muted">
+            Overview of users and food donation statistics.
+        </p>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-lg-3 col-md-6 mb-4">
+
+            <div class="card shadow border-0 text-center p-4">
+
+                <h1>👥</h1>
+
+                <h5>Total Users</h5>
+
+                <h2 class="text-primary">
+                    @ViewBag.TotalUsers
+                </h2>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4">
+
+            <div class="card shadow border-0 text-center p-4">
+
+                <h1>🍱</h1>
+
+                <h5>Total Donations</h5>
+
+                <h2 class="text-success">
+                    @ViewBag.TotalDonations
+                </h2>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4">
+
+            <div class="card shadow border-0 text-center p-4">
+
+                <h1>⏳</h1>
+
+                <h5>Pending</h5>
+
+                <h2 class="text-warning">
+                    @ViewBag.PendingDonations
+                </h2>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4">
+
+            <div class="card shadow border-0 text-center p-4">
+
+                <h1>✅</h1>
+
+                <h5>Completed</h5>
+
+                <h2 class="text-success">
+                    @ViewBag.CompletedDonations
+                </h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card shadow-lg border-0 mt-4">
+
+        <div class="card-body">
+
+            <h4 class="mb-4">
+
+                📈 Donation Progress
+
+            </h4>
+
+            <div class="mb-3">
+
+                <label class="fw-bold">
+
+                    Pending Donations (@ViewBag.PendingPercent%)
+
+                </label>
+
+                <div class="progress" style="height:25px;">
+
+                    <div class="progress-bar bg-warning text-dark"
+                         role="progressbar"
+                         style="width:@ViewBag.PendingPercent%">
+
+                        @ViewBag.PendingPercent%
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div>
+
+                <label class="fw-bold">
+
+                    Completed Donations (@ViewBag.CompletedPercent%)
+
+                </label>
+
+                <div class="progress" style="height:25px;">
+
+                    <div class="progress-bar bg-success"
+                         role="progressbar"
+                         style="width:@ViewBag.CompletedPercent%">
+
+                        @ViewBag.CompletedPercent%
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card shadow-lg border-0 mt-4">
+
+        <div class="card-body">
+
+            <h4 class="text-danger">
+
+                📋 Report Summary
+
+            </h4>
+
+            <hr />
+
+            <ul class="list-group">
+
+                <li class="list-group-item">
+
+                    👥 Registered Users :
+                    <strong>@ViewBag.TotalUsers</strong>
+
+                </li>
+
+                <li class="list-group-item">
+
+                    🍱 Total Donations :
+                    <strong>@ViewBag.TotalDonations</strong>
+
+                </li>
+
+                <li class="list-group-item">
+
+                    ⏳ Pending Donations :
+                    <strong>@ViewBag.PendingDonations</strong>
+
+                </li>
+
+                <li class="list-group-item">
+
+                    ✅ Completed Donations :
+                    <strong>@ViewBag.CompletedDonations</strong>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</div>

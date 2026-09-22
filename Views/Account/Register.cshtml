@@ -1,0 +1,346 @@
+@model FoodDonationManagementSystem.Models.ViewModels.RegisterViewModel
+
+@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+    ViewData["Title"] = "Create Account";
+}
+
+
+
+<div class="login-background">
+
+
+    <div class="container">
+
+
+        <div class="row justify-content-center align-items-center"
+             style="min-height:90vh;">
+
+
+
+
+
+            <div class="col-lg-6 col-md-8">
+
+
+
+
+
+                <div class="card shadow-lg border-0 p-5 login-card">
+
+
+
+
+
+
+                    <div class="text-center mb-4">
+
+
+
+                        <div style="font-size:70px;">
+
+                            🍲
+
+                        </div>
+
+
+
+                        <h2 class="fw-bold"
+                            style="color:#064E3B;">
+
+
+                            Create Account
+
+
+                        </h2>
+
+
+
+                        <p class="text-muted">
+
+                            Join Food Donation Management System
+
+                        </p>
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+                    <form asp-action="Register"
+                          method="post">
+
+
+
+                        @Html.AntiForgeryToken()
+
+
+
+
+                        <div asp-validation-summary="All"
+                             class="text-danger mb-3"></div>
+
+
+
+
+
+
+
+                        <div class="mb-3">
+
+
+                            <label class="fw-bold">
+
+                                👤 Full Name
+
+                            </label>
+
+
+                            <input asp-for="Name"
+                                   class="form-control form-control-lg"
+                                   placeholder="Enter your name" />
+
+
+                            <span asp-validation-for="Name"
+                                  class="text-danger"></span>
+
+
+                        </div>
+
+
+
+
+
+
+
+
+
+                        <div class="mb-3">
+
+
+                            <label class="fw-bold">
+
+                                📧 Email
+
+                            </label>
+
+
+
+                            <input asp-for="Email"
+                                   class="form-control form-control-lg"
+                                   placeholder="Enter email" />
+
+
+
+                            <span asp-validation-for="Email"
+                                  class="text-danger"></span>
+
+
+
+                        </div>
+
+
+
+
+
+
+
+
+
+                        <div class="mb-3">
+
+
+                            <label class="fw-bold">
+
+                                📱 Phone
+
+                            </label>
+
+
+
+                            <input asp-for="Phone"
+                                   class="form-control form-control-lg"
+                                   placeholder="Enter phone number" />
+
+
+
+                            <span asp-validation-for="Phone"
+                                  class="text-danger"></span>
+
+
+
+                        </div>
+
+
+
+
+
+
+
+
+                        <div class="mb-3">
+
+
+                            <label class="fw-bold">
+
+                                🔒 Password
+
+                            </label>
+
+
+
+                            <input asp-for="Password"
+                                   type="password"
+                                   class="form-control form-control-lg"
+                                   placeholder="Create password" />
+
+
+
+                            <span asp-validation-for="Password"
+                                  class="text-danger"></span>
+
+
+
+                        </div>
+
+
+
+
+
+
+
+
+                        <div class="mb-4">
+
+
+                            <label class="fw-bold">
+
+                                🎭 Select Role
+
+                            </label>
+
+
+
+                            <select asp-for="Role"
+                                    class="form-select form-select-lg">
+
+
+
+                                <option value="Donor">
+
+                                    🧑 Donor - Donate Food
+
+                                </option>
+
+
+
+
+                                <option value="NGO">
+
+                                    🏢 NGO - Collect Food
+
+                                </option>
+
+
+
+                            </select>
+
+
+                        </div>
+
+
+
+
+
+
+
+                        <button type="submit"
+                                class="btn btn-success btn-lg w-100">
+
+
+                            🚀 Create Account
+
+
+                        </button>
+
+
+
+
+
+                    </form>
+
+
+
+
+
+
+
+                    <div class="text-center mt-4">
+
+
+
+                        <p>
+
+
+                            Already have account?
+
+
+                            <a asp-action="Login"
+                               class="text-success fw-bold">
+
+
+                                Login
+
+
+                            </a>
+
+
+
+                        </p>
+
+
+
+                    </div>
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+@section Scripts {
+
+    <partial name="_ValidationScriptsPartial" />
+
+}

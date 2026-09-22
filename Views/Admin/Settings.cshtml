@@ -1,0 +1,125 @@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Settings";
+}
+
+<div class="container mt-5">
+
+    <div class="mb-4">
+
+        <h2 class="text-danger fw-bold">
+            ⚙️ Admin Settings
+        </h2>
+
+        <p class="text-muted">
+            Manage system information and quick actions.
+        </p>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-lg-6 mb-4">
+
+            <div class="card shadow-lg border-0 h-100">
+
+                <div class="card-body">
+
+                    <h4 class="text-primary">
+                        ℹ️ System Information
+                    </h4>
+
+                    <hr />
+
+                    <table class="table">
+
+                        <tr>
+                            <th>Application</th>
+                            <td>Food Donation Management System</td>
+                        </tr>
+
+                        <tr>
+                            <th>Framework</th>
+                            <td>ASP.NET Core MVC</td>
+                        </tr>
+
+                        <tr>
+                            <th>Database</th>
+                            <td>SQL Server</td>
+                        </tr>
+
+                        <tr>
+                            <th>Authentication</th>
+                            <td>ASP.NET Identity</td>
+                        </tr>
+
+                        <tr>
+                            <th>Version</th>
+                            <td>1.0</td>
+                        </tr>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-6 mb-4">
+
+            <div class="card shadow-lg border-0 h-100">
+
+                <div class="card-body">
+
+                    <h4 class="text-success">
+                        🚀 Quick Actions
+                    </h4>
+
+                    <hr />
+
+                    <div class="d-grid gap-3">
+
+                        <a asp-controller="Admin"
+                           asp-action="Dashboard"
+                           class="btn btn-danger">
+
+                            📊 Dashboard
+
+                        </a>
+
+                        <a asp-controller="Admin"
+                           asp-action="Users"
+                           class="btn btn-primary">
+
+                            👥 Manage Users
+
+                        </a>
+
+                        <a asp-controller="Admin"
+                           asp-action="Donations"
+                           class="btn btn-success">
+
+                            🍱 Manage Donations
+
+                        </a>
+
+                        <a asp-controller="Admin"
+                           asp-action="Reports"
+                           class="btn btn-warning">
+
+                            📈 Reports
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

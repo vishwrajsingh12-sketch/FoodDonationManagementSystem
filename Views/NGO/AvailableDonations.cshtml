@@ -1,0 +1,414 @@
+@model IEnumerable<FoodDonationManagementSystem.Models.Donation>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Available Donations";
+}
+
+
+
+<div class="container mt-5">
+
+
+
+    <!-- HEADER -->
+
+
+    <div class="mb-5">
+
+
+        <h2 class="fw-bold"
+            style="color:#064E3B">
+
+
+            🍱 Available Food Donations
+
+
+        </h2>
+
+
+        <p class="text-muted">
+
+            Browse food donations and help distribute meals.
+
+        </p>
+
+
+    </div>
+
+
+
+
+
+
+
+    <!-- SEARCH -->
+
+
+    <div class="card p-3 mb-5">
+
+
+        <form asp-action="AvailableDonations"
+              method="get">
+
+
+            <div class="input-group">
+
+
+                <input type="text"
+                       name="search"
+                       value="@ViewBag.Search"
+                       class="form-control form-control-lg"
+                       placeholder="🔍 Search food by name..." />
+
+
+
+                <button class="btn btn-success">
+
+
+                    Search
+
+
+                </button>
+
+
+            </div>
+
+
+        </form>
+
+
+    </div>
+
+
+
+
+
+
+
+
+    @if (!Model.Any())
+    {
+
+
+        <div class="card text-center p-5">
+
+
+            <h1>
+
+                🍲
+
+            </h1>
+
+
+            <h4 class="fw-bold">
+
+                No Donations Available
+
+            </h4>
+
+
+            <p class="text-muted">
+
+                Currently no food donations available.
+
+            </p>
+
+
+        </div>
+
+
+    }
+
+    else
+    {
+
+
+        <div class="row">
+
+
+            @foreach (var item in Model)
+            {
+
+
+                <div class="col-lg-4 col-md-6 mb-4">
+
+
+
+                    <div class="card h-100">
+
+
+
+
+
+
+                        @if (!string.IsNullOrWhiteSpace(item.FoodImage)
+                        && item.FoodImage != "/images/food/default.png")
+                        {
+
+
+                            <img src="@item.FoodImage"
+                                 class="card-img-top"
+                                 style="height:240px;object-fit:cover;" />
+
+
+                        }
+
+                        else
+                        {
+
+
+                            <div class="text-center p-5"
+                                 style="background:#ECFDF5;">
+
+
+                                <div style="font-size:70px">
+
+                                    🍲
+
+                                </div>
+
+
+                                <h6 class="text-muted">
+
+                                    No Image Available
+
+                                </h6>
+
+
+                            </div>
+
+
+                        }
+
+
+
+
+
+
+
+                        <div class="card-body">
+
+
+
+                            <h4 class="fw-bold"
+                                style="color:#047857">
+
+
+                                @item.FoodName
+
+
+                            </h4>
+
+
+
+                            <hr />
+
+
+
+                            <p>
+
+                                🍽 <b>Type:</b>
+                                @item.FoodType
+
+                            </p>
+
+
+
+
+                            <p>
+
+                                📦 <b>Quantity:</b>
+                                @item.Quantity
+
+                            </p>
+
+
+
+
+                            <p>
+
+                                📅 <b>Expiry:</b>
+                                @item.ExpiryDate.ToShortDateString()
+
+                            </p>
+
+
+
+
+                            <p>
+
+                                📍 <b>Pickup:</b>
+                                @item.PickupAddress
+
+                            </p>
+
+
+
+
+
+
+                            <p>
+
+
+                                <b>Status:</b>
+
+
+                                @if (item.Status == "Pending")
+                                {
+
+                                    <span class="badge bg-warning text-dark">
+
+                                        ⏳ Pending
+
+                                    </span>
+
+                                }
+                                else if (item.Status == "Accepted")
+                                {
+
+                                    <span class="badge bg-primary">
+
+                                        🤝 Accepted
+
+                                    </span>
+
+                                }
+                                else
+                                {
+
+                                    <span class="badge bg-success">
+
+                                        ✔ Completed
+
+                                    </span>
+
+                                }
+
+
+
+                            </p>
+
+
+
+                        </div>
+
+
+
+
+
+
+
+
+                        <div class="card-footer bg-white border-0 p-4">
+
+
+
+                            @if (item.Status == "Pending")
+                            {
+
+
+                                <form asp-action="AcceptDonation"
+                                      method="post">
+
+
+                                    @Html.AntiForgeryToken()
+
+
+
+                                    <input type="hidden"
+                                           name="id"
+                                           value="@item.DonationId" />
+
+
+
+                                    <button class="btn btn-success w-100">
+
+
+                                        🤝 Accept Donation
+
+
+                                    </button>
+
+
+
+                                </form>
+
+
+                            }
+
+                            else if (item.Status == "Accepted")
+                            {
+
+
+                                <form asp-action="CompleteDonation"
+                                      method="post">
+
+
+                                    @Html.AntiForgeryToken()
+
+
+
+                                    <input type="hidden"
+                                           name="id"
+                                           value="@item.DonationId" />
+
+
+
+                                    <button class="btn btn-primary w-100">
+
+
+                                        ✅ Complete Pickup
+
+
+                                    </button>
+
+
+
+                                </form>
+
+
+                            }
+
+                            else
+                            {
+
+
+                                <button class="btn btn-success w-100"
+                                        disabled>
+
+
+                                    ✔ Donation Completed
+
+
+                                </button>
+
+
+                            }
+
+
+
+                        </div>
+
+
+
+
+
+                    </div>
+
+
+                </div>
+
+
+
+            }
+
+
+        </div>
+
+
+    }
+
+
+
+</div>

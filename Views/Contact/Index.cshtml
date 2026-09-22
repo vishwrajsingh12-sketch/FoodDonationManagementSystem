@@ -1,0 +1,241 @@
+﻿@model FoodDonationManagementSystem.Models.Contact
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Contact Us";
+}
+
+
+
+<div class="container mt-5">
+
+
+
+    <div class="text-center mb-5">
+
+
+        <h1 class="fw-bold"
+            style="color:#064E3B">
+
+
+            📞 Contact Us
+
+
+        </h1>
+
+
+
+        <p class="text-muted lead">
+
+
+            Have questions? Send us a message.
+
+
+        </p>
+
+
+    </div>
+
+
+
+
+
+
+
+    <div class="row justify-content-center">
+
+
+
+        <div class="col-lg-7">
+
+
+
+            <div class="card p-5">
+
+
+
+
+
+                @if (TempData["Success"] != null)
+                {
+
+                    <div class="alert alert-success text-center">
+
+                        @TempData["Success"]
+
+                    </div>
+
+                }
+
+
+
+
+
+
+
+                <form asp-action="Index"
+                      method="post">
+
+
+                    @Html.AntiForgeryToken()
+
+
+
+
+
+
+                    <div class="mb-4">
+
+
+                        <label class="fw-bold">
+
+                            👤 Name
+
+                        </label>
+
+
+                        <input asp-for="Name"
+                               class="form-control form-control-lg"
+                               placeholder="Enter your name" />
+
+
+                        <span asp-validation-for="Name"
+                              class="text-danger"></span>
+
+
+                    </div>
+
+
+
+
+
+
+
+
+                    <div class="mb-4">
+
+
+                        <label class="fw-bold">
+
+                            📧 Email
+
+                        </label>
+
+
+                        <input asp-for="Email"
+                               class="form-control form-control-lg"
+                               placeholder="Enter your email" />
+
+
+                        <span asp-validation-for="Email"
+                              class="text-danger"></span>
+
+
+                    </div>
+
+
+
+
+
+
+
+
+                    <div class="mb-4">
+
+
+                        <label class="fw-bold">
+
+                            📌 Subject
+
+                        </label>
+
+
+                        <input asp-for="Subject"
+                               class="form-control form-control-lg"
+                               placeholder="Enter subject" />
+
+
+                        <span asp-validation-for="Subject"
+                              class="text-danger"></span>
+
+
+                    </div>
+
+
+
+
+
+
+
+
+                    <div class="mb-4">
+
+
+                        <label class="fw-bold">
+
+                            💬 Message
+
+                        </label>
+
+
+                        <textarea asp-for="Message"
+                                  class="form-control"
+                                  rows="5"
+                                  placeholder="Write your message"></textarea>
+
+
+                        <span asp-validation-for="Message"
+                              class="text-danger"></span>
+
+
+                    </div>
+
+
+
+
+
+
+
+
+                    <button type="submit"
+                            class="btn btn-success btn-lg w-100">
+
+
+                        📩 Send Message
+
+
+                    </button>
+
+
+
+
+                </form>
+
+
+
+
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+@section Scripts {
+
+    <partial name="_ValidationScriptsPartial" />
+
+}

@@ -1,0 +1,284 @@
+@model FoodDonationManagementSystem.Models.ViewModels.LoginViewModel
+
+@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+    ViewData["Title"] = "Login";
+}
+
+
+
+<div class="login-background">
+
+
+    <div class="container">
+
+
+
+        <div class="row justify-content-center align-items-center"
+             style="min-height:90vh;">
+
+
+
+
+
+            <div class="col-lg-5 col-md-7">
+
+
+
+
+
+
+                <div class="card shadow-lg border-0 p-5 login-card">
+
+
+
+
+
+                    <div class="text-center mb-4">
+
+
+
+                        <div style="font-size:70px;">
+
+                            🍲
+
+                        </div>
+
+
+
+                        <h2 class="fw-bold"
+                            style="color:#064E3B;">
+
+
+                            Welcome Back
+
+
+                        </h2>
+
+
+
+                        <p class="text-muted">
+
+                            Login to Food Donation Management System
+
+                        </p>
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+                    <form asp-action="Login"
+                          method="post">
+
+
+
+                        @Html.AntiForgeryToken()
+
+
+
+
+
+                        <div asp-validation-summary="All"
+                             class="text-danger"></div>
+
+
+
+
+
+
+                        <div class="mb-4">
+
+
+
+                            <label class="fw-bold">
+
+                                📧 Email
+
+                            </label>
+
+
+
+                            <input asp-for="Email"
+                                   class="form-control form-control-lg"
+                                   placeholder="Enter your email" />
+
+
+
+                            <span asp-validation-for="Email"
+                                  class="text-danger"></span>
+
+
+
+                        </div>
+
+
+
+
+
+
+
+                        <div class="mb-4">
+
+
+                            <label class="fw-bold">
+
+                                🔒 Password
+
+                            </label>
+
+
+
+                            <input asp-for="Password"
+                                   type="password"
+                                   class="form-control form-control-lg"
+                                   placeholder="Enter password" />
+
+
+
+                            <span asp-validation-for="Password"
+                                  class="text-danger"></span>
+
+
+
+                        </div>
+
+
+
+
+
+
+
+                        <div class="form-check mb-4">
+
+
+                            <input asp-for="RememberMe"
+                                   class="form-check-input" />
+
+
+
+                            <label class="form-check-label">
+
+                                Remember me
+
+                            </label>
+
+
+                        </div>
+
+
+
+
+
+
+
+
+                        <button type="submit"
+                                class="btn btn-success btn-lg w-100">
+
+
+                            🔐 Login
+
+
+                        </button>
+
+
+
+
+
+
+                    </form>
+
+
+
+
+
+
+
+                    <div class="text-center mt-4">
+
+
+
+                        <p class="mb-2">
+
+
+                            New user?
+
+
+                            <a asp-controller="Account"
+                               asp-action="Register"
+                               class="fw-bold text-success">
+
+
+                                Create Account
+
+
+                            </a>
+
+
+
+                        </p>
+
+
+
+
+
+
+                        <a asp-controller="Account"
+                           asp-action="ForgotPassword"
+                           class="fw-bold text-danger">
+
+
+                            Forgot Password?
+
+
+                        </a>
+
+
+
+                    </div>
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+            </div>
+
+
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+@section Scripts {
+
+    <partial name="_ValidationScriptsPartial" />
+
+}

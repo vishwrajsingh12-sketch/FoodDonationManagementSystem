@@ -1,0 +1,368 @@
+@model FoodDonationManagementSystem.Models.Donation
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Add Donation";
+}
+
+
+
+<div class="container mt-5">
+
+
+
+    <div class="row justify-content-center">
+
+
+        <div class="col-lg-8">
+
+
+
+            <div class="card p-0 overflow-hidden">
+
+
+
+                <div class="text-white text-center p-4"
+                     style="background:linear-gradient(135deg,#064E3B,#059669);">
+
+
+                    <h2 class="fw-bold">
+
+                        🍲 Add Food Donation
+
+                    </h2>
+
+
+                    <p class="mb-0">
+
+                        Share food, spread happiness ❤️
+
+                    </p>
+
+
+                </div>
+
+
+
+
+
+
+                <div class="card-body p-5">
+
+
+
+                    <form asp-action="AddDonation"
+                          method="post"
+                          enctype="multipart/form-data">
+
+
+                        @Html.AntiForgeryToken()
+
+
+
+                        <div asp-validation-summary="All"
+                             class="alert alert-danger"></div>
+
+
+
+
+
+
+
+                        <div class="mb-4">
+
+
+                            <label asp-for="FoodName"
+                                   class="fw-bold">
+
+                                🍱 Food Name
+
+                            </label>
+
+
+                            <input asp-for="FoodName"
+                                   class="form-control form-control-lg"
+                                   placeholder="Example: Rice, Roti, Pizza" />
+
+
+                            <span asp-validation-for="FoodName"
+                                  class="text-danger"></span>
+
+
+                        </div>
+
+
+
+
+
+
+
+                        <div class="mb-4">
+
+
+                            <label asp-for="FoodType"
+                                   class="fw-bold">
+
+                                🍽 Food Type
+
+                            </label>
+
+
+                            <select asp-for="FoodType"
+                                    class="form-select form-select-lg">
+
+
+                                <option value="">
+
+                                    -- Select Food Type --
+
+                                </option>
+
+
+                                <option>
+
+                                    Veg
+
+                                </option>
+
+
+                                <option>
+
+                                    Non Veg
+
+                                </option>
+
+
+                            </select>
+
+
+                            <span asp-validation-for="FoodType"
+                                  class="text-danger"></span>
+
+
+                        </div>
+
+
+
+
+
+
+
+
+                        <div class="mb-4">
+
+
+                            <label asp-for="Quantity"
+                                   class="fw-bold">
+
+                                📦 Quantity
+
+                            </label>
+
+
+                            <input asp-for="Quantity"
+                                   class="form-control form-control-lg"
+                                   placeholder="Example: 10 Plates" />
+
+
+                            <span asp-validation-for="Quantity"
+                                  class="text-danger"></span>
+
+
+                        </div>
+
+
+
+
+
+
+
+                        <div class="mb-4">
+
+
+                            <label asp-for="ExpiryDate"
+                                   class="fw-bold">
+
+                                📅 Expiry Date
+
+                            </label>
+
+
+                            <input asp-for="ExpiryDate"
+                                   type="date"
+                                   class="form-control form-control-lg" />
+
+
+                            <span asp-validation-for="ExpiryDate"
+                                  class="text-danger"></span>
+
+
+                        </div>
+
+
+
+
+
+
+
+
+                        <div class="mb-4">
+
+
+                            <label asp-for="PickupAddress"
+                                   class="fw-bold">
+
+                                📍 Pickup Address
+
+                            </label>
+
+
+                            <textarea asp-for="PickupAddress"
+                                      rows="3"
+                                      class="form-control"
+                                      placeholder="Enter pickup location"></textarea>
+
+
+                            <span asp-validation-for="PickupAddress"
+                                  class="text-danger"></span>
+
+
+                        </div>
+
+
+
+
+
+
+
+
+                        <div class="mb-4">
+
+
+                            <label class="fw-bold">
+
+                                📸 Upload Food Image
+
+                            </label>
+
+
+                            <input type="file"
+                                   name="imageFile"
+                                   accept="image/*"
+                                   class="form-control"
+                                   onchange="previewImage(event)" />
+
+
+                        </div>
+
+
+
+
+
+
+
+
+                        <div class="text-center mb-4">
+
+
+                            <img id="preview"
+                                 src="/images/food/default.png"
+                                 class="rounded-4 shadow"
+                                 style="max-height:220px;max-width:100%;" />
+
+
+                        </div>
+
+
+
+
+
+
+
+                        <div class="d-grid gap-3">
+
+
+                            <button type="submit"
+                                    class="btn btn-success btn-lg">
+
+
+                                🍱 Donate Food
+
+
+                            </button>
+
+
+
+
+                            <a asp-action="Dashboard"
+                               class="btn btn-outline-success btn-lg">
+
+
+                                ← Back to Dashboard
+
+
+                            </a>
+
+
+
+                        </div>
+
+
+
+
+
+                    </form>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+@section Scripts {
+
+
+    <partial name="_ValidationScriptsPartial" />
+
+
+    <script>
+
+
+        function previewImage(event) {
+
+            var reader = new FileReader();
+
+
+            reader.onload = function() {
+
+                document.getElementById("preview").src =
+                    reader.result;
+
+            }
+
+
+            reader.readAsDataURL(event.target.files[0]);
+
+        }
+
+
+
+    </script>
+
+
+}
